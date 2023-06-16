@@ -1459,7 +1459,7 @@ def execute_command(com):
 
 def cli_navigation_loop():
     while True:
-        print("You are currently in '%s':" % cli_current_page)
+        print("usted está actualmente en '%s':" % cli_current_page)
         print_page_details()
         command = input("%s: " % cli_current_page)
         try:
