@@ -1,31 +1,15 @@
 <div align="center">
   
-<h1>Mangio-RVC-Fork with v2 Support! 💻 </h1>
-A fork of an easy-to-use SVC framework based on VITS with top1 retrieval 💯. In general, this fork provides a CLI interface in addition. And also gives you more f0 methods to use, as well as a personlized 'hybrid' f0 estimation method using nanmedian. <br><br>
+<h1>Mangio-RVC-Fork with v2 Support! -  Editado por IA (Sistema de Interes)💻 </h1>
+Una bifurcación de un marco SVC fácil de usar basado en VITS con recuperación top1 💯. En general, esta bifurcación proporciona además una interfaz CLI. Y también le brinda más métodos f0 para usar, así como un método de estimación f0 'híbrido' personalizado que usa nanmedian. <br><br>
 <b> 
 
-<b>Im developing alone. Help support me in the rapid development of open-source A.I Deep NN audio tools and frameworks. By donating, you making a commitment to the improvement of audio A.I as a whole. You should donate if you merely want to "support" me, not because you are then expecting a finished product. There are no guarantees. Thank you</b>
+<b>Estoy desarrollando solo. Ayúdenme a apoyarme en el rápido desarrollo de marcos y herramientas de audio A.I Deep NN de código abierto. Al donar, te comprometes con la mejora de la IA de audio en su conjunto. Deberías donar si simplemente quieres "apoyarme", no porque estés esperando un producto terminado. No hay garantías. Gracias</b>
 <br>
-<a href="https://www.paypal.com/donate/?business=HEW6P8R79NFFN&no_recurring=0&item_name=I+have+an+altruistic+drive+to+develop+open-source+A.I+frameworks+and+tools.+Support+me+in+improving+A.I+audio+entirely.&currency_code=AUD"><img src="./mangio_utils/donate.png" height="42"></a>
 
-> 💓 Please support the original [RVC repository](https://www.bilibili.com/video/BV1pm4y1z7Gm/). Without it, obviously this fork wouldn't have been possible. The Mangio-RVC-Fork aims to essentially enhance the features that the original RVC repo has in my own way. Please note that this fork is NOT STABLE and was forked with the intention of experimentation. Do not use this Fork thinking it is a "better" version of the original repo. Think of it more like another "version" of the original repo. Please note that this doesn't have a google colab. If you want to use google colab, go to the original repository. This fork is intended to be used with paperspace and local machines for now.
+> 💓 Apoye el [repositorio RVC] original (https://www.bilibili.com/video/BV1pm4y1z7Gm/). Sin él, obviamente, esta bifurcación no habría sido posible. El Mangio-RVC-Fork tiene como objetivo mejorar esencialmente las características que tiene el repositorio RVC original a mi manera. Tenga en cuenta que este tenedor NO ES ESTABLE y se bifurcó con la intención de experimentar. No use este Fork pensando que es una versión "mejor" del repositorio original. Piense en ello más como otra "versión" del repositorio original. Tenga en cuenta que esto no tiene una colaboración de Google. Si desea utilizar google colab, vaya al repositorio original. Esta bifurcación está pensada para usarse con máquinas locales y espacio papel por ahora.
 </b>
 
-<b> Now supports version 2 pre-trained models! </b>
-
-## Add me on discord: Funky Town#2048
-I am able to communicate with you here and there.
-
-[![madewithlove](https://forthebadge.com/images/badges/built-with-love.svg)](https://github.com/liujing04/Retrieval-based-Voice-Conversion-WebUI)
-  
-[![Licence](https://img.shields.io/github/license/liujing04/Retrieval-based-Voice-Conversion-WebUI?style=for-the-badge)](https://github.com/liujing04/Retrieval-based-Voice-Conversion-WebUI/blob/main/%E4%BD%BF%E7%94%A8%E9%9C%80%E9%81%B5%E5%AE%88%E7%9A%84%E5%8D%8F%E8%AE%AE-LICENSE.txt)
-
-[![Huggingface](https://img.shields.io/badge/🤗%20-Spaces-yellow.svg?style=for-the-badge)](https://huggingface.co/lj1995/VoiceConversionWebUI/tree/main/)
-
-[![Discord](https://img.shields.io/badge/RVC%20Developers-Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/HcsmBBGyVk)
-
-Special thanks to discord user @kalomaze#2983 for creating a temporary colab notebook for this fork for the time being. Eventually, an official, more stable notebook will be included with this fork. Please use paperspace instead if you can as it is much more stable.
-<br>
 
 [![Open In Colab](https://img.shields.io/badge/Colab-F9AB00?style=for-the-badge&logo=googlecolab&color=525252)](https://colab.research.google.com/drive/1iWOLYE9znqT6XE5Rw2iETE19ZlqpziLx?usp=sharing)
 
