@@ -1211,10 +1211,10 @@ def cli_infer(com):
     feature_ratio = float(com[11])
     protection_amnt = float(com[12])
 
-    print("Mangio-RVC-Fork Infer-CLI: Starting the inference...")
+    print("Infer-CLI: Comenzando la inferencia...")
     vc_data = get_vc(model_name)
     print(vc_data)
-    print("Mangio-RVC-Fork Infer-CLI: Performing inference...")
+    print("Infer-CLI: Realizando inferencia...")
     conversion_data = vc_single(
         speaker_id,
         source_audio_path,
@@ -1231,11 +1231,11 @@ def cli_infer(com):
         crepe_hop_length,        
     )
     if "Success." in conversion_data[0]:
-        print("Mangio-RVC-Fork Infer-CLI: Inference succeeded. Writing to %s/%s..." % ('audio-outputs', output_file_name))
+        print("Infer-CLI: Inferencia exitosa. Escribiendo a %s/%s..." % ('audio-outputs', output_file_name))
         wavfile.write('%s/%s' % ('audio-outputs', output_file_name), conversion_data[1][0], conversion_data[1][1])
-        print("Mangio-RVC-Fork Infer-CLI: Finished! Saved output to %s/%s" % ('audio-outputs', output_file_name))
+        print("Infer-CLI: ¡Terminado! Salida guardada en %s/%s" % ('audio-outputs', output_file_name))
     else:
-        print("Mangio-RVC-Fork Infer-CLI: Inference failed. Here's the traceback: ")
+        print("Infer-CLI: la inferencia falló. Aquí está el rastreo: ")
         print(conversion_data[0])
 
 def cli_pre_process(com):
@@ -1245,7 +1245,7 @@ def cli_pre_process(com):
     sample_rate = com[2]
     num_processes = int(com[3])
 
-    print("Mangio-RVC-Fork Pre-process: Starting...")
+    print("Pre-proceso: Iniciando...")
     generator = preprocess_dataset(
         trainset_directory, 
         model_name, 
@@ -1253,7 +1253,7 @@ def cli_pre_process(com):
         num_processes
     )
     execute_generator_function(generator)
-    print("Mangio-RVC-Fork Pre-process: Finished")
+    print("Pre-proceso: Terminado")
 
 def cli_extract_feature(com):
     com = cli_split_command(com)
@@ -1265,9 +1265,9 @@ def cli_extract_feature(com):
     crepe_hop_length = int(com[5])
     version = com[6] # v1 or v2
     
-    print("Mangio-RVC-CLI: Extract Feature Has Pitch: " + str(has_pitch_guidance))
-    print("Mangio-RVC-CLI: Extract Feature Version: " + str(version))
-    print("Mangio-RVC-Fork Feature Extraction: Starting...")
+    print("La característica de extracción tiene tono: " + str(has_pitch_guidance))
+    print("Extraer versión de la función: " + str(version))
+    print("Extracción de características: Comenzando...")
     generator = extract_f0_feature(
         gpus, 
         num_processes, 
@@ -1278,7 +1278,7 @@ def cli_extract_feature(com):
         crepe_hop_length
     )
     execute_generator_function(generator)
-    print("Mangio-RVC-Fork Feature Extraction: Finished")
+    print("Extracción de características: terminado")
 
 def cli_train(com):
     com = cli_split_command(com)
@@ -1300,7 +1300,7 @@ def cli_train(com):
     g_pretrained_path = "%sf0G%s.pth" % (pretrained_base, sample_rate)
     d_pretrained_path = "%sf0D%s.pth" % (pretrained_base, sample_rate)
 
-    print("Mangio-RVC-Fork Train-CLI: Training...")
+    print("Tren-CLI: Entrenamiento...")
     click_train(
         model_name,
         sample_rate,
@@ -1322,13 +1322,13 @@ def cli_train_feature(com):
     com = cli_split_command(com)
     model_name = com[0]
     version = com[1]
-    print("Mangio-RVC-Fork Train Feature Index-CLI: Training... Please wait")
+    print("Train Feature Index-CLI: Entrenamiento... Por favor, espere")
     generator = train_index(
         model_name,
         version
     )
     execute_generator_function(generator)
-    print("Mangio-RVC-Fork Train Feature Index-CLI: Done!")
+    print("Train Feature Index-CLI: ¡Listo!")
 
 def cli_extract_model(com):
     com = cli_split_command(com)
@@ -1347,10 +1347,10 @@ def cli_extract_model(com):
         version
     )
     if extract_small_model_process == "Success.":
-        print("Mangio-RVC-Fork Extract Small Model: Success!")
+        print("Extraer modelo pequeño: ¡Éxito!")
     else:
         print(str(extract_small_model_process))        
-        print("Mangio-RVC-Fork Extract Small Model: Failed!")
+        print("Extraer modelo pequeño: ¡Error!")
 
 def print_page_details():
     if cli_current_page == "HOME":
@@ -1468,8 +1468,8 @@ def cli_navigation_loop():
             print(traceback.format_exc())
 
 if(config.is_cli):
-    print("\n\nMangio-RVC-Fork v2 CLI App!\n")
-    print("Welcome to the CLI version of RVC. Please read the documentation on https://github.com/Mangio621/Mangio-RVC-Fork (README.MD) to understand how to use this app.\n")
+    print("\n\nv2 CLI App!\n")
+    print("Bienvenido a la versión CLI de RVC. Lea la documentación en https://github.com/Mangio621/Mangio-RVC-Fork (README.MD) para comprender cómo usar esta aplicación.\n")
     cli_navigation_loop()
 
 #endregion
@@ -1477,7 +1477,7 @@ if(config.is_cli):
 #region RVC WebUI App
 
 with gr.Blocks(theme=gr.themes.Soft()) as app:
-    gr.HTML("<h1> The Mangio-RVC-Fork 💻 </h1>")
+    gr.HTML("<h1> The Mangio-RVC-Fork 💻 - Editado al español por: IA (Sistema de Interes)</h1>")
     gr.Markdown(
         value=i18n(
             "本软件以MIT协议开源, 作者不对软件具备任何控制力, 使用软件者、传播软件导出的声音者自负全责. <br>如不认可该条款, 则不能使用或引用软件包内任何代码和文件. 详见根目录<b>使用需遵守的协议-LICENSE.txt</b>."
