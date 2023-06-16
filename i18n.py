@@ -4,7 +4,7 @@ import os
 
 
 def load_language_list(language):
-    with open(f"./i18n/{language}.json", "r", encoding="utf-8") as f:
+    with open(f"./i18n/es_ES.json", "r", encoding="utf-8") as f:
         language_list = json.load(f)
     return language_list
 
@@ -15,8 +15,8 @@ class I18nAuto:
             language = locale.getdefaultlocale()[
                 0
             ]  # getlocale can't identify the system's language ((None, None))
-        if not os.path.exists(f"./i18n/{language}.json"):
-            language = "en_US"
+        if not os.path.exists(f"./i18n/es_ES.json"):
+            language = "es_ES"
         self.language = language
         # print("Use Language:", language)
         self.language_map = load_language_list(language)
@@ -25,4 +25,5 @@ class I18nAuto:
         return self.language_map.get(key, key)
 
     def print(self):
-        print("Use Language:", self.language)
+        print("Use Language:", "es_ES")
+        
