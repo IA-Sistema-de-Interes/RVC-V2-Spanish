@@ -157,7 +157,7 @@ def vc_single(
 ):  # spk_item, input_audio0, vc_transform0,f0_file,f0method0
     global tgt_sr, net_g, vc, hubert_model, version
     if input_audio_path is None:
-        return "You need to upload an audio", None
+        return "Tienes que subir un audio", None
     f0_up_key = int(f0_up_key)
     try:
         audio = load_audio(input_audio_path, 16000)
@@ -802,7 +802,7 @@ def click_train(
     print(cmd)
     p = Popen(cmd, shell=True, cwd=now_dir)
     p.wait()
-    return "训练结束, 您可查看控制台训练日志或实验文件夹下的train.log"
+    return "Una vez finalizada la capacitación, puede consultar el registro de capacitación de la consola o el train.log"
 
 
 # but4.click(train_index, [exp_dir1], info3)
@@ -815,10 +815,10 @@ def train_index(exp_dir1, version19):
         else "%s/3_feature768" % (exp_dir)
     )
     if os.path.exists(feature_dir) == False:
-        return "请先进行特征提取!"
+        return "¡Realice primero la extracción de características!"
     listdir_res = list(os.listdir(feature_dir))
     if len(listdir_res) == 0:
-        return "请先进行特征提取！"
+        return "¡Realice primero la extracción de características!"
     npys = []
     for name in sorted(listdir_res):
         phone = np.load("%s/%s" % (feature_dir, name))
@@ -1515,7 +1515,7 @@ with gr.Blocks(theme=gr.themes.Soft()) as app:
                         )
                         input_audio0 = gr.Textbox(
                             label=i18n("输入待处理音频文件路径(默认是正确格式示例)"),
-                            value="E:\\codes\\py39\\test-20230416b\\todo-songs\\冬之花clip1.wav",
+                            value="/content/audio/clip1.wav",
                         )
                         f0method0 = gr.Radio(
                             label=i18n(
@@ -1701,7 +1701,7 @@ with gr.Blocks(theme=gr.themes.Soft()) as app:
                     with gr.Column():
                         dir_input = gr.Textbox(
                             label=i18n("输入待处理音频文件夹路径(去文件管理器地址栏拷就行了)"),
-                            value="E:\codes\py39\\test-20230416b\\todo-songs",
+                            value="/content/lista_audio",
                         )
                         inputs = gr.File(
                             file_count="multiple", label=i18n("也可批量输入音频文件, 二选一, 优先读文件夹")
@@ -1741,25 +1741,25 @@ with gr.Blocks(theme=gr.themes.Soft()) as app:
             with gr.Group():
                 gr.Markdown(
                     value=i18n(
-                        "人声伴奏分离批量处理， 使用UVR5模型。 <br>"
-                        "合格的文件夹路径格式举例： E:\\codes\\py39\\vits_vc_gpu\\白鹭霜华测试样例(去文件管理器地址栏拷就行了)。 <br>"
-                        "模型分为三类： <br>"
-                        "1、保留人声：不带和声的音频选这个，对主人声保留比HP5更好。内置HP2和HP3两个模型，HP3可能轻微漏伴奏但对主人声保留比HP2稍微好一丁点； <br>"
-                        "2、仅保留主人声：带和声的音频选这个，对主人声可能有削弱。内置HP5一个模型； <br> "
-                        "3、去混响、去延迟模型（by FoxJoy）：<br>"
-                        "  (1)MDX-Net(onnx_dereverb):对于双通道混响是最好的选择，不能去除单通道混响；<br>"
-                        "&emsp;(234)DeEcho:去除延迟效果。Aggressive比Normal去除得更彻底，DeReverb额外去除混响，可去除单声道混响，但是对高频重的板式混响去不干净。<br>"
-                        "去混响/去延迟，附：<br>"
-                        "1、DeEcho-DeReverb模型的耗时是另外2个DeEcho模型的接近2倍；<br>"
-                        "2、MDX-Net-Dereverb模型挺慢的；<br>"
-                        "3、个人推荐的最干净的配置是先MDX-Net再DeEcho-Aggressive。"
+                        "Procesamiento por lotes de separación de acompañamiento vocal, utilizando modelo UVR5. <br>"
+                        "Ejemplo de un formato de ruta de carpeta calificado: E:\\codes\\py39\\vits_vc_gpu\\Egret Shuanghua test sample (simplemente vaya a la barra de direcciones del administrador de archivos y cópielo). <br>"
+                        "Los modelos se dividen en tres categorías: <br>"
+                        "1. Conservar voces: elija esta opción para audio sin armonía, que es mejor que HP5 para conservar la voz principal. Hay dos modelos integrados, HP2 y HP3.HP3 puede perder un poco el acompañamiento, pero conserva la voz principal un poco mejor que HP2; <br>"
+                        "2. Mantenga solo la voz principal: elija esto para audio con armonía, lo que puede debilitar la voz principal. Un modelo de HP5 incorporado; <br> "
+                        "3. Modelo de desreverberación y desretraso (por FoxJoy):<br>"
+                        "  (1) MDX-Net (onnx_dereverb): es la mejor opción para la reverberación de dos canales y la reverberación de un solo canal no se puede eliminar;<br>"
+                        "&emsp;(234) DeEcho: elimina el efecto de retardo. Agresivo elimina más a fondo que Normal, DeReverb también elimina la reverberación, lo que puede eliminar la reverberación mono, pero no es limpio para la reverberación de placa pesada de alta frecuencia.<br>"
+                        "De-reverb/de-delay, con:<br>"
+                        "1. El consumo de tiempo del modelo DeEcho-DeReverb es casi el doble que el de los otros dos modelos DeEcho;<br>"
+                        "2. El modelo MDX-Net-Dereverb es bastante lento;<br>"
+                        "3. La configuración más limpia recomendada personalmente es MDX-Net primero y luego DeEcho-Aggressive."
                     )
                 )
                 with gr.Row():
                     with gr.Column():
                         dir_wav_input = gr.Textbox(
                             label=i18n("输入待处理音频文件夹路径"),
-                            value="E:\\codes\\py39\\test-20230416b\\todo-songs\\todo-songs",
+                            value="/content/lista_audio",
                         )
                         wav_inputs = gr.File(
                             file_count="multiple", label=i18n("也可批量输入音频文件, 二选一, 优先读文件夹")
@@ -1770,16 +1770,16 @@ with gr.Blocks(theme=gr.themes.Soft()) as app:
                             minimum=0,
                             maximum=20,
                             step=1,
-                            label="人声提取激进程度",
+                            label="Agresividad de extracción vocal",
                             value=10,
                             interactive=True,
                             visible=False,  # 先不开放调整
                         )
                         opt_vocal_root = gr.Textbox(
-                            label=i18n("指定输出主人声文件夹"), value="opt"
+                            label=i18n("指定输出主人声文件夹"), value="/content/audio_vocal"
                         )
                         opt_ins_root = gr.Textbox(
-                            label=i18n("指定输出非主人声文件夹"), value="opt"
+                            label=i18n("指定输出非主人声文件夹"), value="/content/audio_instrumental"
                         )
                         format0 = gr.Radio(
                             label=i18n("导出文件格式"),
@@ -1818,8 +1818,8 @@ with gr.Blocks(theme=gr.themes.Soft()) as app:
                 )
                 if_f0_3 = gr.Radio(
                     label=i18n("模型是否带音高指导(唱歌一定要, 语音可以不要)"),
-                    choices=[True, False],
-                    value=True,
+                    choices=["Si", "No"],
+                    value="si",
                     interactive=True,
                 )
                 version19 = gr.Radio(
@@ -1845,7 +1845,7 @@ with gr.Blocks(theme=gr.themes.Soft()) as app:
                 )
                 with gr.Row():
                     trainset_dir4 = gr.Textbox(
-                        label=i18n("输入训练文件夹路径"), value="E:\\语音音频+标注\\米津玄师\\src"
+                        label=i18n("输入训练文件夹路径"), value="/content/dataset"
                     )
                     spk_id5 = gr.Slider(
                         minimum=0,
@@ -2117,7 +2117,7 @@ with gr.Blocks(theme=gr.themes.Soft()) as app:
                 with gr.Row():
                     ckpt_path2 = gr.Textbox(
                         label=i18n("模型路径"),
-                        value="E:\\codes\\py39\\logs\\mi-test_f0_48k\\G_23333.pth",
+                        value="/content/Retrieval-based-Voice-Conversion-WebUI/logs/Mi-Modelo/G_23333.pth",
                         interactive=True,
                     )
                     save_name = gr.Textbox(
